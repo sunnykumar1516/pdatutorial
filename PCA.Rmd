@@ -1,0 +1,70 @@
+---
+title: "PCA"
+author: "sunny"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+if(!require('factoextra')) {
+    install.packages('factoextra')
+    library('factoextra')
+}
+```
+
+
+```{r}
+library('corrr')
+library("FactoMineR")
+library(ggcorrplot)
+```
+
+------------------ principal component analysis---------------------------
+```{r}
+protein_data <- read.csv("/Users/sunny/Documents/sunny/projects/machine learning/activity/protein.csv")
+str(protein_data)
+```
+```{r}
+View(protein_data)
+```
+
+```{r}
+colSums(is.na(protein_data))
+```
+```{r}
+numerical_data <- protein_data[,2:10]
+
+head(numerical_data)
+```
+
+```{r}
+data_normalized <- scale(numerical_data)
+head(data_normalized)
+```
+```{r}
+corr_matrix <- cor(data_normalized)
+ggcorrplot(corr_matrix)
+```
+```{r}
+data.pca <- princomp(corr_matrix)
+summary(data.pca)
+```
+```{r}
+data.pca$loadings[, 1:3]
+```
+```{r}
+fviz_eig(data.pca, addlabels = TRUE)
+```
+```{r}
+fviz_pca_var(data.pca, col.var = "black")
+```
+```{r}
+
+```
+
+--------------------------------------------
+

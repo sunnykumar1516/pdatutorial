@@ -1,0 +1,47 @@
+---
+title: "seed"
+author: "sunny"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ > undersyanding set.seed() 
+ 
+```{r}
+# sample of 3 numbers from 1 to 20
+sample(1:20, 3)
+```
+```{r}
+# sample of 3 numbers from 1 to 20
+sample(1:20, 3)
+```
+```{r}
+# sample of 3 numbers from 1 to 20
+sample(1:20, 3)
+```
+ > each time the result is different 
+ random variable is different
+ 
+ 
+ 
+ > what if i wanted random values but same random values each time.
+ 
+```{r}
+set.seed(123)
+sample(1:20, 3)
+```
+ 
+```{r}
+set.seed(123)
+sample(1:20, 3)
+```
+ 
+```{r}
+set.seed(123)
+sample(1:20, 3)
+```
+ > results are same
